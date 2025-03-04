@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Cover Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .form-container h2 {
+            text-align: center;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0f7fa;
+            border: 1px solid #0097a7;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Forest Cover Prediction</h2>
+        <form action="/predict" method="POST">
+            <label for="elevation">Elevation (meters):</label>
+            <input type="number" id="elevation" name="Elevation" required>
+
+            <label for="aspect">Aspect (degrees azimuth):</label>
+            <input type="number" id="aspect" name="Aspect" required>
+
+            <label for="slope">Slope (degrees):</label>
+            <input type="number" id="slope" name="Slope" required>
+
+            <label for="h_distance_hydrology">Horizontal Distance to Hydrology (meters):</label>
+            <input type="number" id="h_distance_hydrology" name="Horizontal_Distance_To_Hydrology" required>
+
+            <label for="v_distance_hydrology">Vertical Distance to Hydrology (meters):</label>
+            <input type="number" id="v_distance_hydrology" name="Vertical_Distance_To_Hydrology" required>
+
+            <label for="h_distance_roadways">Horizontal Distance to Roadways (meters):</label>
+            <input type="number" id="h_distance_roadways" name="Horizontal_Distance_To_Roadways" required>
+
+            <label for="hillshade_9am">Hillshade at 9am (0-255 index):</label>
+            <input type="number" id="hillshade_9am" name="Hillshade_9am" required>
+
+            <label for="hillshade_noon">Hillshade at Noon (0-255 index):</label>
+            <input type="number" id="hillshade_noon" name="Hillshade_Noon" required>
+
+            <label for="hillshade_3pm">Hillshade at 3pm (0-255 index):</label>
+            <input type="number" id="hillshade_3pm" name="Hillshade_3pm" required>
+
+            <label for="h_distance_fire_points">Horizontal Distance to Fire Points (meters):</label>
+            <input type="number" id="h_distance_fire_points" name="Horizontal_Distance_To_Fire_Points" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <h3>Prediction Result:</h3>
+            <p>{{ prediction }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
