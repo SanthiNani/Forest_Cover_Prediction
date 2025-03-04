@@ -52,7 +52,14 @@ Follow these steps to set up the project on your local machine.
 
 3. Download the dataset (`forest_cover_prediction.csv`) and place it in the project folder.
 
-4. Train the model and start the Flask app:
+4. Train the Model and save the models:
+   ```bash
+   python save_models.py
+   ```
+- It will save the models with **.pkl** format.
+- Models will save as **forest_cover_model.pkl** and **scaler.pkl**.
+  
+6. Start the Flask app:
    ```bash
    python app.py
    ```
